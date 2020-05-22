@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #505050;
+}
+
+a{
+    text-decoration: none;
+}
+
+.menu{
+    background-color: #656565;
+    height: 140px;
+}
+
+.menu div{
+    float: left;
+}
+
+.logo{
+    width: 120px;
+    margin-left: 15px;
+}
+
+.lista{
+    list-style: none;
+}
+
+.l-menu{
+    display: flex;
+    float: right;
+    margin-top: 55px;
+}
+
+.l-menu li{
+    margin-right: 10px;
+}
+
+.l-menu li a{
+    padding: 5px;
+}
