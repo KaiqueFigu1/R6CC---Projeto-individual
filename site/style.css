@@ -7,10 +7,19 @@
 
 body{
     background-color: #505050;
+    font-size: 18px;
 }
 
 a{
     text-decoration: none;
+}
+
+h1{
+    text-shadow: 3px 3px 8px #000000;
+}
+
+h2{
+    text-shadow: 3px 3px 8px #000000;
 }
 
 .menu{
@@ -27,11 +36,8 @@ a{
     margin-left: 15px;
 }
 
-.lista{
-    list-style: none;
-}
-
 .l-menu{
+    list-style: none;
     display: flex;
     float: right;
     margin-top: 55px;
@@ -41,6 +47,37 @@ a{
     margin-right: 10px;
 }
 
-.l-menu li a{
+.btn{
     padding: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    transition: 0.5s;
 }
+
+.btn:hover{
+    background-color: #c72641;
+}
+
+.ativo{
+    border: none;
+    border-bottom: 1px solid #c72641;
+}
+
+.container{
+    padding-top: 15px;
+    margin: auto;
+    width: 80%;
+}
+
+/* Estilizando a seção de boas vindas*/
+
+.bem-vindo{
+    text-align: center;
+}
+
+.lista{
+    margin-left: 22px;
+}
+
+/* Estilizando Regras */
+
