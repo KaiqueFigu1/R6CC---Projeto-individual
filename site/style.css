@@ -77,6 +77,10 @@ h2{
 
 .bem-vindo{
     text-align: center;
+    height: 400px;
+    background-image: url(img/operadores.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .lista{
