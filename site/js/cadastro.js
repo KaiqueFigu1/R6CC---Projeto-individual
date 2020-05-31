@@ -5,7 +5,7 @@ function verificar(){
     var senhaRepetida = i_senhaRepetida.value;
 
 
-    if (nickname.trimStart().trimEnd().indexOf('') == 0){
+    if (nickname.trimStart().trimEnd().indexOf('') == 0 || nickname.indexOf(' ') != -1){
         alert('Insira um nickname válido')
     }else if (email.indexOf("@") == -1 || email.indexOf(".com") == -1){
         alert('Digite um e-mail válido');
@@ -24,6 +24,6 @@ function verificar(){
     }else if (senha != senhaRepetida){
         alert('A senha está diferente da senha confirmada');
     }else {
-        alert(`${nickname} aguarde o contato do adm por e-mail :)`);
+        alert(`${nickname} aguarde o contato da nossa equipe por e-mail :)`);
     }
 }
