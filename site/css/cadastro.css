@@ -1,0 +1,14 @@
+.formulario{
+    width: 80%;
+    margin-left: auto;
+}
+
+input{
+    border: none;
+    border: 1px solid #c72641;
+    border-radius: 11px;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 30%;
+    padding: 3px;
+    outline: 0;
+}
