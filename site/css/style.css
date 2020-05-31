@@ -77,19 +77,8 @@ h2{
     width: 80%;
 }
 
-/* Estilizando a seção de boas vindas*/
-
-.bem-vindo{
-    text-align: center;
-    height: 400px;
-    background-image: url(img/operadores.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
 .lista{
     margin-left: 22px;
 }
 
-/* Estilizando Regras */
 
