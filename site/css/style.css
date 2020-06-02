@@ -33,10 +33,9 @@ h2{
 .menu{
     background-color: #656565;
     height: 140px;
-}
-
-.menu div{
-    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo{
@@ -47,8 +46,6 @@ h2{
 .l-menu{
     list-style: none;
     display: flex;
-    float: right;
-    margin-top: 55px;
 }
 
 .l-menu li{
