@@ -12,3 +12,9 @@ input{
     padding: 3px;
     outline: 0;
 }
+
+.container .formulario p a{
+    color: #c72641;
+    text-decoration: underline;
+    font-weight: bold;
+}

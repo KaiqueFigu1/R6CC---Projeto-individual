@@ -27,3 +27,11 @@ function verificar(){
         alert(`${nickname} aguarde o contato da nossa equipe por e-mail :)`);
     }
 }
+
+function entrar(){
+    if (email.indexOf("@") == -1 || email.indexOf(".com") == -1){
+        alert('Digite um e-mail válido');
+    }else {
+        alert('Bem vindo!')
+    }
+}

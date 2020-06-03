@@ -6,6 +6,7 @@
     <title>R6CC - Cadastro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login_cadastro.css">
 </head>
 <body>
     <header class="menu">
@@ -17,5 +18,17 @@
                 <li><a href="login.html" class="btn ativo">Entrar/Cadastro</a></li>
             </ul>
     </header>
+
+    <div class="container">
+        <form class="formulario">
+            Seu e-mail: <br>
+            <input type="email" id="i_mail" required> <br>
+            Sua senha: <br>
+            <input style="margin-bottom: 10px;" type="password" id="i_senha" required> <br>
+            <button class="btn" onclick="entrar()">Entrar!</button>
+            <p>Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
+        </form>    
+    </div>
+    <script src="./js/index.js"></script>
 </body>
 </html>
