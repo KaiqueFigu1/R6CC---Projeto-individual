@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R6CC - Login</title>
+    <title>R6CC - Cadastro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login_cadastro.css">
@@ -21,15 +21,15 @@
 
     <div class="container">
         <form class="formulario">
-            Seu nickname da PSN: <br>
-            <input type="text" id="i_nickname" required> <br>
-            Seu e-mail: <br>
-            <input type="email" id="i_email" required> <br>
-            Crie uma senha: <br>
-            <input type="password" id="i_senha" required> <br>
-            Confirmar senha: <br>
-            <input style="margin-bottom: 10px;" type="password" id="i_senhaRepetida" required> <br>
-            <button class="btn" onclick="verificar()">Criar conta</button>
+            <label for="i_nickname">Seu nickname da PSN: </label> <br>
+            <input type="text" id="i_nickname"> <br>
+            <label for="i_email">Seu e-mail:</label> <br>
+            <input type="email" id="i_email"> <br>
+            <label for="i_senha">Crie uma senha: </label><br>
+            <input type="password" id="i_senha"> <br>
+            <label for="i_senhaRepetida">Confirmar senha:</label> <br>
+            <input style="margin-bottom: 10px;" type="password" id="i_senhaRepetida"> <br>
+            <input class="btn" type="submit" value="Cadastrar!" onclick="verificar()">
         </form>
     </div>
     <script src="./js/index.js"></script>

@@ -47,7 +47,7 @@ function buscar() {
         mapa6: "Mansão"
     }
     let mapaSorteado = parseInt(Math.random() * 7);
-
+    
     lmapas.innerHTML = '';
 
     if (mapaSorteado == 0) {
