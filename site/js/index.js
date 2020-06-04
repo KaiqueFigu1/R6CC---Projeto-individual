@@ -46,47 +46,46 @@ function buscar() {
         mapa5: "Parque Temático",
         mapa6: "Mansão"
     }
-    let num = parseInt(Math.random() * 7);
-    let mapaSorteado = mapPool['mapa' + num];
+    let mapaSorteado = parseInt(Math.random() * 7);
 
     lmapas.innerHTML = '';
 
-    if (num == 0) {
+    if (mapaSorteado == 0) {
         lmapas.innerHTML =
             `Mapa sorteado: <br>
         <li class="item">
             <img src="img/mapas/consulado.jpg">
             <div class="caixa">Consulado</div>
         </li>`
-    } else if (num == 1) {
+    } else if (mapaSorteado == 1) {
         lmapas.innerHTML =
             `Mapa sorteado: <br>
         <li class="item">
             <img src="img/mapas/fronteira.jpg">
             <div class="caixa">Fronteira</div>
         </li>`
-    } else if (num == 2) {
+    } else if (mapaSorteado == 2) {
         lmapas.innerHTML =
             `Mapa sorteado: <br>
         <li class="item">
             <img src="img/mapas/campo.jpg">
             <div class="caixa">Casa de campo</div>
         </li>`
-    } else if (num == 3) {
+    } else if (mapaSorteado == 3) {
         lmapas.innerHTML =
             `Mapa sorteado: <br>
         <li class="item">
             <img src="img/mapas/litoral.jpg">
             <div class="caixa">Litoral</div>
         </li>`
-    } else if (num == 4) {
+    } else if (mapaSorteado == 4) {
         lmapas.innerHTML =
             `Mapa sorteado: <br>
         <li class="item">
             <img src="img/mapas/cafe.jpg">
             <div class="caixa">Café Dostoyevsky</div>
         </li>`
-    } else if (num == 5) {
+    } else if (mapaSorteado == 5) {
         lmapas.innerHTML =
             `Mapa sorteado: <br>
         <li class="item">
