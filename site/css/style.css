@@ -80,4 +80,21 @@ h2{
     margin-left: 22px;
 }
 
+footer{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #c72641;
+}
+
+footer ul{
+    width: 5%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
 
