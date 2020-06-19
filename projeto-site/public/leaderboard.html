@@ -65,14 +65,19 @@
                     console.log(`Jogadores encontrados: ${JSON.stringify(lideres)}`);
 
                     for(cont = 0; cont < lideres.length; cont++){
-                        li = document.createElement("li");
+                        let li = document.createElement('li');
+                        let hr = document.createElement('hr');
                         lista.appendChild(li);
-                        li.innerHTML = `
+                        lista.appendChild(hr)
+                        if(cont >= 0 && cont <= 2){
+                            li.innerHTML = `
+                            Nickname: <span class="verde-li">${lideres[cont].nickname}</span><br>
+                            Pontuação: <span class="verde-li">${lideres[cont].pontuacao}</span>`;
+                        }else{
+                            li.innerHTML = `
                             Nickname: <span class="vermelho-li">${lideres[cont].nickname}</span><br>
                             Pontuação: <span class="vermelho-li">${lideres[cont].pontuacao}</span>`;
-
-                        
-
+                        }
                     }
                 });
 

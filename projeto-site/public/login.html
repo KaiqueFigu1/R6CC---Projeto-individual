@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login_cadastro.css">
     <script src="https://kit.fontawesome.com/42d2b3af0b.js" crossorigin="anonymous"></script>
+    
     <title>R6CC - Login</title>
 
 </head>
@@ -70,8 +71,8 @@
 
                 resposta.json().then(json => {
 
-                    sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.nome;
+                    sessionStorage.login_usuario_meuapp = json.email;
+                    sessionStorage.nome_usuario_meuapp = json.nickname;
                     
                     window.location.href = 'lobby.html';
                 });
