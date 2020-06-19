@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R6CC - Cadastro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login_cadastro.css">
+    <script src="https://kit.fontawesome.com/42d2b3af0b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="menu">
+        <div><img src="img/logo.png" class="logo"></div>
+            <ul class="lista l-menu">
+                <li><a href="index.html" class="btn">Home</a></li>
+                <li><a href="lobby.html" class="btn">Procurar lobby</a></li>
+                <li><a href="leaderboard.html" class="btn">Leaderboard</a></li>
+                <li><a href="login.html" class="btn ativo">Entrar/Cadastro</a></li>
+            </ul>
+    </header>
+
+    <div class="container">
+        <form class="formulario" id="form_cadastro" method="post" onsubmit="return cadastrar()">
+            <label for="i_nickname">Seu nickname da PSN: </label> <br>
+            <input type="text" id="i_nickname" name="nick"> <br>
+            <label for="i_email">Seu e-mail:</label> <br>
+            <input type="email" id="i_email" name="email"> <br>
+            <label for="i_senha">Crie uma senha: </label><br>
+            <input type="password" id="i_senha" name="senha"> <br>
+            <button style="margin-top: 15px;" class="btn" id="btn_entrar" onclick="verificar()">Cadastrar!</button>
+        </form>
+    </div>
+
+    <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+        Erro no cadastro
+    </div>
+    
+    <footer class="footer-a">
+        <div>
+            <p>Desenvolvido por Kaique F. Lucena</p>
+        </div>
+        <p>Minhas redes:</p>
+        <ul>
+            <li> <a href="https://www.linkedin.com/in/kaique-lucena-1383401a2/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+            <li> <a href="https://github.com/KaiqueFigu1" target="_blank"><i class="fab fa-github"></i></a></li>
+        </ul>
+    </footer>
+    <script src="./js/index.js"></script>
+</body>
+</html>
+<script>
+
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                alert('Cadastrado com sucesso!')
+                window.location.href='login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        div_erro.style.display='none';
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+        div_erro.style.display='block';
+    }
+
+</script>

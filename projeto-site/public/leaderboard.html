@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R6CC - Leaderboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <script src="https://kit.fontawesome.com/42d2b3af0b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="menu">
+        <div><img src="img/logo.png" class="logo"></div>
+        <ul class="lista l-menu">
+            <li><a href="index.html" class="btn">Home</a></li>
+            <li><a href="lobby.html" class="btn">Procurar lobby</a></li>
+            <li><a href="leaderboard.html" class="btn ativo">Leaderboard</a></li>
+            <li><a href="login.html" class="btn">Entrar/Cadastro</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <h2>Top 100 jogadores R6CC</h2>
+        <ol id="lista_lideres">
+
+        </ol>
+        <div id="aguarde">
+            <img src="img/aguarde.gif" alt="">
+        </div>
+        
+    </div>
+
+    <footer>
+        <div>
+            <p>Desenvolvido por Kaique F. Lucena</p>
+        </div>
+        <p>Minhas redes:</p>
+        <ul>
+            <li> <a href="https://www.linkedin.com/in/kaique-lucena-1383401a2/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </li>
+            <li> <a href="https://github.com/KaiqueFigu1" target="_blank"><i class="fab fa-github"></i></a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>
+<script>
+    let lista = document.getElementById("lista_lideres");
+
+
+    function buscarLideres(){
+        lista.innerHTML = "";
+        fetch(`/usuarios/buscar`
+        ).then(function (resposta) {
+            console.log(resposta)
+            if (resposta.ok) {
+
+                resposta.json().then(function (lideres) {
+
+                    sairAguarde();
+
+                    console.log(`Jogadores encontrados: ${JSON.stringify(lideres)}`);
+
+                    for(cont = 0; cont < lideres.length; cont++){
+                        li = document.createElement("li");
+                        lista.appendChild(li);
+                        li.innerHTML = `
+                            Nickname: <span class="vermelho-li">${lideres[cont].nickname}</span><br>
+                            Pontuação: <span class="vermelho-li">${lideres[cont].pontuacao}</span>`;
+
+                        
+
+                    }
+                });
+
+            } else {
+
+                console.log('Deu ruim!');
+
+                response.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+    }
+    function sairAguarde(){
+        let aguarde = document.getElementById("aguarde");
+        aguarde.style.display = "none";
+    }
+
+    buscarLideres();
+
+    setInterval(buscarLideres, 60000);
+
+</script>

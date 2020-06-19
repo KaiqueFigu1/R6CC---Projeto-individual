@@ -1,0 +1,17 @@
+.vermelho-li{
+    color: #DE1F1F;
+}
+
+#lista-lideres li{
+    font-weight: bold;
+}
+
+#aguarde{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#aguarde img{
+    width: 100px;
+}
