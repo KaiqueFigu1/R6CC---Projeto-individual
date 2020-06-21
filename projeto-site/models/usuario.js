@@ -33,6 +33,11 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
+		adm: {
+			field: 'adm',
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
 	}, 
 	{
 		tableName: 'jogador', 

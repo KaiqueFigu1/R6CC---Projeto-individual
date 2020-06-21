@@ -30,6 +30,9 @@
         <div id="aguarde">
             <img src="img/aguarde.gif" alt="">
         </div>
+        <div id="div_mensagem">
+
+        </div>
         
     </div>
 
@@ -49,10 +52,12 @@
 </html>
 <script>
     let lista = document.getElementById("lista_lideres");
+    let mensagem = document.getElementById("div_mensagem")
 
 
     function buscarLideres(){
         lista.innerHTML = "";
+        mensagem.innerHTML = "";
         fetch(`/usuarios/buscar`
         ).then(function (resposta) {
             console.log(resposta)
@@ -62,7 +67,9 @@
 
                     sairAguarde();
 
-                    console.log(`Jogadores encontrados: ${JSON.stringify(lideres)}`);
+                    if(lideres.texto){
+                        mensagem.innerHTML = lideres.texto;
+                    }
 
                     for(cont = 0; cont < lideres.length; cont++){
                         let li = document.createElement('li');

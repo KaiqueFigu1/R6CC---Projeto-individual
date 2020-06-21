@@ -74,7 +74,12 @@
                     sessionStorage.login_usuario_meuapp = json.email;
                     sessionStorage.nome_usuario_meuapp = json.nickname;
                     
-                    window.location.href = 'lobby.html';
+                    if(json.adm == 1){
+                        window.location.href = 'adm.html';
+                    }else{
+                        window.location.href = 'lobby.html';
+                    }
+                    
                 });
 
             } else {

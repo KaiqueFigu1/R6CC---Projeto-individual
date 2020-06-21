@@ -2,16 +2,21 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Usuario = require('../models').Usuario;
+var app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 let sessoes = [];
 
 /* Recuperar usuário por login e senha */
-router.post('/autenticar', function(req, res, next) {
+router.post('/autenticar', function (req, res, next) {
 	console.log('Recuperando usuário por login e senha');
 
 	var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
 	var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login	
-	
+
 	let instrucaoSql = `select * from Jogador where email='${login}' and senha='${senha}'`;
 	console.log(instrucaoSql);
 
@@ -22,7 +27,7 @@ router.post('/autenticar', function(req, res, next) {
 
 		if (resultado.length == 1) {
 			sessoes.push(resultado[0].dataValues.login);
-			console.log('sessoes: ',sessoes);
+			console.log('sessoes: ', sessoes);
 			res.json(resultado[0]);
 		} else if (resultado.length == 0) {
 			res.status(403).send('Login e/ou senha inválido(s)');
@@ -33,35 +38,36 @@ router.post('/autenticar', function(req, res, next) {
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);
-  	});
+	});
 });
 
 /* Cadastrar usuário */
-router.post('/cadastrar', function(req, res, next) {
+router.post('/cadastrar', function (req, res, next) {
 	console.log('Criando um usuário');
-	
+
 	Usuario.create({
-		nickname : req.body.nick,
-		email : req.body.email,
+		nickname: req.body.nick,
+		email: req.body.email,
 		senha: req.body.senha,
-		pontuacao: 0
+		pontuacao: 0,
+		adm: 0
 	}).then(resultado => {
 		console.log(`Registro criado: ${resultado}`)
-        res.send(resultado);
-    }).catch(erro => {
+		res.send(resultado);
+	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);
-  	});
+	});
 });
 
 
 /* Verificação de usuário */
-router.get('/sessao/:login', function(req, res, next) {
+router.get('/sessao/:login', function (req, res, next) {
 	let login = req.params.email;
 	console.log(`Verificando se o usuário ${login} tem sessão`);
-	
+
 	let tem_sessao = false;
-	for (let u=0; u<sessoes.length; u++) {
+	for (let u = 0; u < sessoes.length; u++) {
 		if (sessoes[u] == login) {
 			tem_sessao = true;
 			break;
@@ -75,16 +81,16 @@ router.get('/sessao/:login', function(req, res, next) {
 	} else {
 		res.sendStatus(403);
 	}
-	
+
 });
 
 
 /* Logoff de usuário */
-router.get('/sair/:login', function(req, res, next) {
+router.get('/sair/:login', function (req, res, next) {
 	let login = req.params.login;
 	console.log(`Finalizando a sessão do usuário ${login}`);
 	let nova_sessoes = []
-	for (let u=0; u<sessoes.length; u++) {
+	for (let u = 0; u < sessoes.length; u++) {
 		if (sessoes[u] != login) {
 			nova_sessoes.push(sessoes[u]);
 		}
@@ -95,7 +101,7 @@ router.get('/sair/:login', function(req, res, next) {
 
 
 /* Recuperar todos os usuários */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
 	console.log('Recuperando todos os usuários');
 	Usuario.findAndCountAll().then(resultado => {
 		console.log(`${resultado.count} registros`);
@@ -104,10 +110,11 @@ router.get('/', function(req, res, next) {
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);
-  	});
+	});
 });
 
-router.get('/buscar', function(req, res, next){
+/* Buscar os 100 jogadores com a maior pontuação */
+router.get('/buscar', function (req, res, next) {
 	console.log('Buscando jogadores')
 
 	let instrucaoSql = "SELECT TOP (100) * FROM Jogador order by pontuacao desc;";
@@ -117,17 +124,64 @@ router.get('/buscar', function(req, res, next){
 		model: Usuario
 	}).then(resultado => {
 		console.log(`Encontrados: ${resultado.length}`);
-		let lideres = resultado;
-		for(let cont = 0; cont < lideres.length; cont++){
-			console.log(`Nickname: ${lideres[cont].dataValues.nickname}, Pontuação: ${lideres[cont].dataValues.pontuacao}`)
+		if (resultado.length == 0) {
+			let erro = { texto: "Nenhum jogador foi encontrado" }
+			res.send(erro)
+		} else {
+			let lideres = resultado;
+			for (let cont = 0; cont < lideres.length; cont++) {
+				console.log(`Nickname: ${lideres[cont].dataValues.nickname}, Pontuação: ${lideres[cont].dataValues.pontuacao}`)
+			}
+			res.send(lideres)
 		}
 
-		res.send(lideres)
+
+		
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);
-  	});
-	
-})
+	});
+
+});
+
+/* Lado do administrador */
+
+/* Rota para aparecer de acordo com o nickname digitado*/
+router.post('/procurar', function (req, res, next){
+	console.log('Procurando o usuario digitado');
+	let Nickname = req.body.nickname;
+	Usuario.findAll({
+		where: {
+			nickname: Nickname
+		}
+	}).then(function(resultado){
+		console.log(resultado)
+		res.send(resultado)
+	})
+});
+
+
+/* Rota para publicar as novas pontuações */
+router.post('/publicar', function (req, res, next) {
+	console.log('Iniciando alteração de pontuação');
+	let Nickname = req.body.nickname;
+	let Pontos = req.body.pontuacao;
+
+	Usuario.update({
+		pontuacao: Pontos
+	}, {
+		where: {
+			nickname: Nickname
+		}
+	}).then(resultado => {
+		if (resultado.length > 0) {
+			console.log(`${resultado.length} jogadores alterados`);
+			res.send(resultado);
+		}
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+});
 
 module.exports = router;
