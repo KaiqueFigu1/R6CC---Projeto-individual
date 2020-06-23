@@ -24,11 +24,12 @@
     </header>
 
     <div class="container">
-        <h2>Olá, <span id="b_usuario"><span><h2></h2>
+        <h2>Olá, <span id="b_usuario"></span></h2><span onclick="logoff()" class="btn-sair">Sair</span>
     </div>
     <div class="container">
         
-        <button class="btn" onclick="buscar()">Procurar lobby</button>
+        <button class="btn" onclick="sortearJogador()">Procurar lobby</button>
+        <div style="display:none" id="div_adversario">Seu adversario é: <b id="b_adversario"></b></div>
         <div class="resultado">
             <div id="jogadores"></div>
             <div id="mapa">
@@ -66,6 +67,9 @@
             </div>
         </div>
     </div>
+    <form style="display: none;" id="form_num">
+        <input id="id_num" name="num">
+    </form>
     <footer style="margin-top: 15px;">
         <div>
             <p>Desenvolvido por Kaique F. Lucena</p>
@@ -83,4 +87,41 @@
 
 <script>
     verificar_autenticacao()
+
+    function sortearJogador(){
+        let formNum = document.getElementById('form_num')
+        let idNum = document.getElementById('id_num')
+        fetch(`/usuarios/contarjogadores`
+        ).then(function (resposta) {
+
+            if (resposta.ok) {
+                
+                resposta.json().then(function (jogadores) {
+                    let random = parseInt(Math.random() * jogadores.length) + 1;
+                    idNum.value = random;
+                    console.log('ID jogador sorteado:' + random);
+                    selecionarJogador();
+                });
+            }
+        });
+    }
+
+    function selecionarJogador(){
+        let formNum = new URLSearchParams(new FormData(form_num));
+        fetch('/usuarios/selecionarjogador',{
+            method: 'POST',
+            body: formNum
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function (jogadorSelecionado) {
+                    console.log(jogadorSelecionado[0].nickname);
+                    let bAdversario = document.getElementById('b_adversario');
+                    let divAdversario = document.getElementById('div_adversario')
+                    divAdversario.style.display = 'block'
+                    bAdversario.innerHTML = jogadorSelecionado[0].nickname;
+
+                });
+            }
+        })
+    }
 </script>

@@ -114,7 +114,7 @@ router.get('/', function (req, res, next) {
 });
 
 /* Buscar os 100 jogadores com a maior pontuação */
-router.get('/buscar', function (req, res, next) {
+router.get('/buscarlideres', function (req, res, next) {
 	console.log('Buscando jogadores')
 
 	let instrucaoSql = "SELECT TOP (100) * FROM Jogador order by pontuacao desc;";
@@ -136,7 +136,7 @@ router.get('/buscar', function (req, res, next) {
 		}
 
 
-		
+
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);
@@ -147,14 +147,14 @@ router.get('/buscar', function (req, res, next) {
 /* Lado do administrador */
 
 /* Rota para aparecer de acordo com o nickname digitado*/
-router.post('/procurar', function (req, res, next){
+router.post('/procurar', function (req, res, next) {
 	console.log('Procurando o usuario digitado');
 	let Nickname = req.body.nickname;
 	Usuario.findAll({
 		where: {
 			nickname: Nickname
 		}
-	}).then(function(resultado){
+	}).then(function (resultado) {
 		console.log(resultado)
 		res.send(resultado)
 	})
@@ -184,4 +184,25 @@ router.post('/publicar', function (req, res, next) {
 	});
 });
 
+/* Rotas para procurar lobby */
+
+router.get('/contarjogadores', function (req, res, next) {
+	Usuario.findAll().then(function (numJogador) {
+		res.send(numJogador)
+	});
+});
+
+router.post('/selecionarjogador', function(req, res, next){
+	let idSorteado = req.body.num;
+	console.log('ID Sorteado'+idSorteado)
+
+	Usuario.findAll({
+		where:{
+			id: idSorteado
+		}
+	}).then(function(resposta){
+		console.log('Jogador selecionado' + resposta);
+		res.send(resposta);
+	})
+});
 module.exports = router;

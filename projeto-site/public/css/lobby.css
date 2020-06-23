@@ -28,3 +28,8 @@
 .caixa{
     margin-left: 15px;
 }
+
+.btn-sair{
+    color: #ff1a1a;
+    cursor: pointer;
+}

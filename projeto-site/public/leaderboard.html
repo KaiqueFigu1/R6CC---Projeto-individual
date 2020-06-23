@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/leaderboard.css">
     <script src="https://kit.fontawesome.com/42d2b3af0b.js" crossorigin="anonymous"></script>
+    <script src="./funcoes.js"></script>
 </head>
 
 <body>
@@ -52,13 +53,13 @@
 </html>
 <script>
     let lista = document.getElementById("lista_lideres");
-    let mensagem = document.getElementById("div_mensagem")
+    let mensagem = document.getElementById("div_mensagem");
 
 
     function buscarLideres(){
         lista.innerHTML = "";
         mensagem.innerHTML = "";
-        fetch(`/usuarios/buscar`
+        fetch(`/usuarios/buscarlideres`
         ).then(function (resposta) {
             console.log(resposta)
             if (resposta.ok) {
