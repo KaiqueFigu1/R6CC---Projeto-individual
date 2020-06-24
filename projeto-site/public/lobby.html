@@ -28,7 +28,7 @@
     </div>
     <div class="container">
         
-        <button class="btn" onclick="sortearJogador()">Procurar lobby</button>
+        <button class="btn" onclick="buscarLobby()">Procurar lobby</button>
         <div style="display:none" id="div_adversario">Seu adversario é: <b id="b_adversario"></b></div>
         <div class="resultado">
             <div id="jogadores"></div>
@@ -88,7 +88,7 @@
 <script>
     verificar_autenticacao()
 
-    function sortearJogador(){
+    function buscarLobby(){
         let formNum = document.getElementById('form_num')
         let idNum = document.getElementById('id_num')
         fetch(`/usuarios/contarjogadores`

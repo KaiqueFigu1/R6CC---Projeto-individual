@@ -34,14 +34,7 @@
     padding: 2px;
     border-radius: 4px 0px 0px 4px;
 }
-
-#div_notificacao div{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-#div_notificacao div h4{
-    color: #c72641;
+#lista_erros{
+    color: #000;
 }
 

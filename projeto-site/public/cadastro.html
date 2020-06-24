@@ -23,24 +23,31 @@
         </ul>
     </header>
 
-    <div id="div_notificacao">
-        <i class="far fa-bell fa-5x"></i>
-        <div>
-            <h4>Ocorram alguns erros</h4>
-            <ul id="lista_erros"></ul>
+    <div id="alerta" style="padding-left: 20px;">
+        <div class="mensagem">
+            <h4>Alerta:</h4>
+            <div>
+                <b id="b_alerta">Erro no cadastro</b>
+            </div>
+            <div><ul id="lista_erros"></ul></div>
+            <div class="div_botoes">
+                <button class="btn" onclick="continuar()">OK</button>
+            </div>
         </div>
+
     </div>
 
+
     <div class="container">
-        <form class="formulario" id="form_cadastro" method="post" onsubmit="return cadastrar()">
+        <form class="formulario" id="form_cadastro" method="post">
             <label for="i_nickname">Seu nickname da PSN: </label> <br>
             <input type="text" id="i_nickname" name="nick"> <br>
             <label for="i_email">Seu e-mail:</label> <br>
             <input type="email" id="i_email" name="email"> <br>
             <label for="i_senha">Crie uma senha: </label><br>
             <input type="password" id="i_senha" name="senha"> <br>
-            <button style="margin-top: 15px;" class="btn" id="btn_entrar" onclick="verificar()">Cadastrar!</button>
         </form>
+        <button style="margin: 15px 0px 0px 20%;" class="btn" id="btn_entrar" onclick="cadastrar()">Cadastrar!</button>
     </div>
 
     <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
@@ -58,39 +65,56 @@
             <li> <a href="https://github.com/KaiqueFigu1" target="_blank"><i class="fab fa-github"></i></a></li>
         </ul>
     </footer>
-    <script src="./js/index.js"></script>
 </body>
 
 </html>
 <script>
 
-    document.getElementById('div_notificacao').style.display = 'none';
-
+    document.getElementById('alerta').style.display = 'none';
+    let lista_erros = document.getElementById('lista_erros')
 
     function cadastrar() {
-        aguardar();
-        var formulario = new URLSearchParams(new FormData(form_cadastro));
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            body: formulario
-        }).then(function (response) {
-
-            if (response.ok) {
-
-                alert('Cadastrado com sucesso!')
-                window.location.href = 'login.html';
-
-            } else {
-
-                console.log('Erro de cadastro!');
-                response.text().then(function (resposta) {
-                    div_erro.innerHTML = resposta;
-                });
-                finalizar_aguardar();
+        document.getElementById('alerta').style.display = 'none';
+        let erros = validarCadastro();
+        if (erros.length > 0) {
+            document.getElementById('alerta').style.display = 'block';
+            for (let cont = 0; cont < erros.length; cont++) {
+                let li = document.createElement('li');
+                lista_erros.appendChild(li);
+                li.style.color = `black`;
+                li.innerHTML = erros[cont];
             }
-        });
 
-        return false;
+        } else {
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(form_cadastro));
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+
+                if (response.ok) {
+
+                    alert('Cadastrado com sucesso!')
+                    window.location.href = 'login.html';
+
+                } else {
+
+                    console.log('Erro de cadastro!');
+                    response.text().then(function (resposta) {
+                        div_erro.innerHTML = resposta;
+                    });
+                    finalizar_aguardar();
+                }
+            });
+
+            return false;
+        }
+
+    }
+
+    function continuar(){
+        document.getElementById('alerta').style.display = 'none';
     }
 
     function aguardar() {
@@ -101,6 +125,30 @@
     function finalizar_aguardar() {
         btn_entrar.disabled = false;
         div_erro.style.display = 'block';
+    }
+
+    function validarCadastro() {
+        erros = [];
+        let Nickname = document.getElementById('i_nickname').value;
+        let Email = document.getElementById('i_email').value;
+        let Senha = document.getElementById('i_senha').value;
+
+        if (Email.indexOf('@') == -1 ||
+            Email.indexOf('.com') == -1 ||
+            Email.indexOf(' ') > -1 ||
+            Email.length < 8) {
+            erros.push('Digite um e-mail válido')
+        }
+        if (Nickname.indexOf(' ') != -1||
+            Nickname.length == 0) {
+            erros.push('Digite um nickname válido')
+        }
+        if (Senha.length < 8) {
+            erros.push('A senha deve conter pelo menos 8 digitos')
+        }
+
+        return erros;
+
     }
 
 </script>
