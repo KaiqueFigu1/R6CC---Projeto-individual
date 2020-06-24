@@ -205,4 +205,22 @@ router.post('/selecionarjogador', function(req, res, next){
 		res.send(resposta);
 	})
 });
+
+router.get('/sortearmapa', function(req, res, next){
+	let mapPool = [
+		'fronteira',
+		'consulado',
+		'casa_de_campo',
+		'mansao',
+		'cafe_dostoyevsky',
+		'parque_tematico',
+		'litoral'
+	];
+
+	let random = parseInt(Math.random() * mapPool.length);
+	let mapaSorteado = {};
+	mapaSorteado.mapa = mapPool[random];
+	console.log(mapaSorteado,'   ---   ',random);
+	res.send(mapaSorteado);
+});
 module.exports = router;

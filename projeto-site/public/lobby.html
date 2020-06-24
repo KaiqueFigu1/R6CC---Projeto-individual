@@ -33,33 +33,34 @@
         <div class="resultado">
             <div id="jogadores"></div>
             <div id="mapa">
+                <h3 style="display: none;" id="h3_mapa">Mapa:</h3>
                 <ul class="ul_mappool" id="lmapas">
                     <h1>Map Pool:</h1>
-                    <li class="item">
+                    <li id="fronteira" class="item">
                         <img src="img/mapas/fronteira.jpg">
                         <div class="caixa">Fronteira</div>
                     </li>
-                    <li class="item">
+                    <li id="consulado" class="item">
                         <img src="img/mapas/consulado.jpg">
                         <div class="caixa">Consulado</div>
                     </li>
-                    <li class="item">
+                    <li id="casa_de_campo" class="item">
                         <img src="img/mapas/campo.jpg">
                         <div class="caixa">Casa de campo</div>
                     </li>
-                    <li class="item">
+                    <li id="mansao" class="item">
                         <img src="img/mapas/mansao.jpg">
                         <div class="caixa">Mansão</div>
                     </li>
-                    <li class="item">
+                    <li id="cafe_dostoyevsky" class="item">
                         <img src="img/mapas/cafe.jpg">
                         <div class="caixa">Café Dostoyevsky</div>
                     </li>
-                    <li class="item">
+                    <li id="parque_tematico" class="item">
                         <img src="img/mapas/parque.jpg">
                         <div class="caixa">Parque Temático</div>
                     </li>
-                    <li class="item">
+                    <li id="litoral" class="item">
                         <img src="img/mapas/litoral.jpg">
                         <div class="caixa">Litoral</div>
                     </li>
@@ -101,6 +102,7 @@
                     idNum.value = random;
                     console.log('ID jogador sorteado:' + random);
                     selecionarJogador();
+                    selecionarMapa();
                 });
             }
         });
@@ -121,6 +123,28 @@
                     bAdversario.innerHTML = jogadorSelecionado[0].nickname;
 
                 });
+            }
+        })
+    }
+
+    function selecionarMapa(){
+        fetch('/usuarios/sortearmapa',{
+            method: 'GET'
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(res){
+                    let mapaSorteado = document.getElementById(`${res.mapa}`);
+                    let mapaConteudo = mapaSorteado.innerHTML
+                    let ulMap = document.getElementById('lmapas');
+                    let li = document.createElement('li');
+                    let h3Mapa = document.getElementById('h3_mapa');
+
+                    h3Mapa.style.display = 'block'
+                    li.className = 'item';
+                    ulMap.innerHTML = '';
+                    ulMap.appendChild(li);
+                    li.innerHTML = mapaConteudo;
+                })
             }
         })
     }
