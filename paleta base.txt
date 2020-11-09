@@ -1,5 +1,0 @@
-#c72641 - Roxo do logo
-#404040 - Cinza do logo
-#ffffff - Branco
-#656565 - Cinza do menu
-#505050 - Cor do background
