@@ -1,0 +1,26 @@
+{
+  "name": "r6cc---projeto-individual",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaiqueFigu1/R6CC---Projeto-individual.git"
+  },
+  "author": "Kaique Lucena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KaiqueFigu1/R6CC---Projeto-individual/issues"
+  },
+  "homepage": "https://github.com/KaiqueFigu1/R6CC---Projeto-individual#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.5"
+  }
+}
