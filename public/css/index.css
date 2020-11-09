@@ -1,0 +1,14 @@
+.banner{
+    height: 50vh;
+    padding: 30px;
+    background-image: url('../images/Banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner div{
+    color: #ffffff;
+    max-width: max-content;
+    background-color: rgba(0, 0, 0, .1);
+}
+
