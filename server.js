@@ -1,15 +1,17 @@
 const express = require('express')
 const server = express()
 const { urlencoded } = require('body-parser')
-var path = require('path');
+const path = require('path');
 
 server.use(express.json())
-server.use(express.urlencoded({ extended: true }));
-server.use(express.static(path.join(__dirname, 'public')));
+server.use(express.urlencoded({ extended: true }))
+server.use(express.static(path.join(__dirname, 'public')))
 
 const indexRouter = require("./routes/index")
+const userRouter = require("./routes/user")
 
 server.use('/', indexRouter)
+server.use('/user', userRouter)
 
 const port = 3000
 

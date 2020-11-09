@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <div>
+                <h1>R6CC</h1>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/lobby">Buscar Lobby</a></li>
+                    <li><a href="/leaderboard">Leaderboard</a></li>
+                    <li><a class="on" href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h3>Login</h3>
+        <form method="POST" action="/user/login">
+            <input type="email" name="email">
+            <input type="password" name="password">
+            <button type="submit">Login!</button>
+        </form>
+        <div>
+            <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
+        </div>
+    </main>
+</body>
+</html>

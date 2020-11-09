@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <div>
+                <h1>R6CC</h1>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/lobby">Buscar Lobby</a></li>
+                    <li><a href="/leaderboard">Leaderboard</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h3>Login</h3>
+        <form method="POST" action="/user/singup">
+            <ul>
+                <li><input type="email" name="email"></li>
+                <li><input type="text" name="nickname" autocomplete="off"></li>
+                <li><input type="password" name="password"></li>               
+            </ul>
+            <button type="submit">Cadastrar!</button>
+        </form>
+        <div>
+            <p>Já tem conta? <a href="/login">Login</a></p>
+        </div>
+    </main>
+</body>
+</html>

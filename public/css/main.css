@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+    height: 15vh;
+    width: 100vw;
+    background-color: #ff7e00;
+}
+
+.menu ul{
+    list-style-type: none;
+    display: flex;
+}
+
+.menu ul li{
+    margin-left: 15px;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #ffffff;
+    padding: 3px;
+}
+
+.on{
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
