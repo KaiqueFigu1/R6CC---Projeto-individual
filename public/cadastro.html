@@ -14,10 +14,10 @@
             </div>
             <div>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/lobby">Buscar Lobby</a></li>
-                    <li><a href="/leaderboard">Leaderboard</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/" class="btn">Home</a></li>
+                    <li><a href="/lobby" class="btn">Buscar Lobby</a></li>
+                    <li><a href="/leaderboard" class="btn">Leaderboard</a></li>
+                    <li><a href="/login" class="btn">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -27,11 +27,11 @@
         <h3>Cadastro</h3>
         <form method="POST" action="/user/singup">
             <ul>
-                <li><input type="email" name="email"></li>
-                <li><input type="text" name="nickname" autocomplete="off"></li>
-                <li><input type="password" name="password"></li>               
+                <li><label for="email">Email</label> <input id="email" type="email" name="email"></li>
+                <li><label for="nick">Nickname</label><input id="nick" type="text" name="nickname" autocomplete="off"></li>
+                <li><label for="password">Senha</label><input id="password" type="password" name="password"></li>               
             </ul>
-            <button type="submit">Cadastrar!</button>
+            <button type="submit" class="btn">Cadastrar!</button>
         </form>
         <div>
             <p>Já tem conta? <a href="/login">Login</a></p>

@@ -5,11 +5,43 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Heebo', sans-serif;
+    text-decoration: none;
 }
 
 main{
     width: 80%;
     margin: auto;
+    padding: 5px;
+}
+
+form ul{
+    list-style: none;
+    margin-bottom: 5px;
+    width: 400px;
+}
+
+form ul li{
+    margin-top: 5px;
+}
+
+form ul li input{
+    margin-left: 5px;
+    width: 400px;
+    padding: 1px 2px 0px 2px;
+    border: none;
+    border-bottom: 1px  solid #5691ff;
+}
+
+form .btn{
+    width: 400px;
+    margin-left: 5px;
+}
+
+form .btn:hover{
+    background-color:rgb(48, 250, 29);
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
     padding: 5px;
 }
 
@@ -19,7 +51,6 @@ main{
     padding: 15px;
     align-items: center;
     height: 15vh;
-    width: 100vw;
     background-color: #596a71;
 }
 
@@ -36,29 +67,23 @@ main{
     margin-left: 15px;
 }
 
-.menu ul li a{
+.btn{
     transition: .3s;
     text-decoration: none;
     color: black;
     padding: 3px;
 }
 
-.menu ul li a:hover{
+.btn:hover{
     background-color:rgba(255, 255, 255, 1);
     border: 1px solid #ffffff;
     border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
 }
 
 .on{
-    background-color:rgba(255, 255, 255, .5);
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-}
-
-.on:hover{
-    background-color:rgba(255, 255, 255, 1);
-    border: 1px solid #ffffff;
-    border-radius: 5px;
+    border-bottom: 1px solid black;
 }
 
 .alert{

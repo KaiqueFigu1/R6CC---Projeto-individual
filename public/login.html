@@ -14,10 +14,10 @@
             </div>
             <div>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/lobby">Buscar Lobby</a></li>
-                    <li><a href="/leaderboard">Leaderboard</a></li>
-                    <li><a class="on" href="/login">Login</a></li>
+                    <li><a href="/" class="btn">Home</a></li>
+                    <li><a href="/lobby" class="btn">Buscar Lobby</a></li>
+                    <li><a href="/leaderboard" class="btn">Leaderboard</a></li>
+                    <li><a href="/login" class="on btn">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -26,9 +26,11 @@
     <main>
         <h3>Login</h3>
         <form method="POST" action="/user/login">
-            <input type="email" name="email">
-            <input type="password" name="password">
-            <button type="submit">Login!</button>
+            <ul>
+                <li><label for="email">Email</label><input id="email" type="email" name="email"></li>
+                <li><label for="password">Senha</label><input id="password" type="password" name="password"></li>
+            </ul>
+            <button type="submit" class="btn">Login!</button>
         </form>
         <div>
             <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
