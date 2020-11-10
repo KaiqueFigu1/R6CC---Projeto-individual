@@ -32,12 +32,12 @@ form ul li input{
     border-bottom: 1px  solid #5691ff;
 }
 
-form .btn{
+main .btn{
     width: 400px;
     margin-left: 5px;
 }
 
-form .btn:hover{
+main .btn:hover{
     background-color:rgb(48, 250, 29);
     border-radius: 5px;
     color: #ffffff;
@@ -91,4 +91,14 @@ form .btn:hover{
     padding: 5px;
     border-radius: 5px;
     max-width: max-content;
+}
+
+.container-flex{
+    display: flex;
+    align-items: center;
+}
+
+.container-flex #wait{
+    display: none;
+    margin-left: 25vw;
 }

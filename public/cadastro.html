@@ -25,17 +25,27 @@
 
     <main>
         <h3>Cadastro</h3>
-        <form method="POST" action="/user/singup">
-            <ul>
-                <li><label for="email">Email</label> <input id="email" type="email" name="email"></li>
-                <li><label for="nick">Nickname</label><input id="nick" type="text" name="nickname" autocomplete="off"></li>
-                <li><label for="password">Senha</label><input id="password" type="password" name="password"></li>               
-            </ul>
-            <button type="submit" class="btn">Cadastrar!</button>
-        </form>
+
+        <div class="container-flex">
+            <div>
+                <form method="POST" action="/user/singup">
+                    <ul>
+                        <li><label for="email">Email</label> <input id="email" type="text" name="email"></li>
+                        <li><label for="nick">Nickname</label><input id="nick" type="text" name="nickname" autocomplete="off"></li>
+                        <li><label for="password">Senha</label><input id="password" type="password" name="password"></li>               
+                    </ul>
+                </form>
+                <button onclick="validation()" class="btn">Cadastrar!</button>
+            </div>
+            <div class="attention">
+                <img src="images/aguarde.gif" id="wait">
+            </div>
+        </div>
+        
         <div>
             <p>Já tem conta? <a href="/login">Login</a></p>
         </div>
     </main>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -19,7 +19,8 @@ router.post('/singup', (req, res) => {
         "nickname" : req.body.nickname,
         "password" : req.body.password
     }
-    res.send(userData)
+
+    
 })
 
 
