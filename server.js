@@ -16,7 +16,7 @@ server.use('/user', userRouter)
 const port = 3000
 
 server.listen(port, () =>{
-    console.log("Server listening at " + port)
+    console.log("server on http://localhost:" + port)
 })
 
 module.exports = server;

@@ -8,7 +8,12 @@
 
 .banner div{
     color: #ffffff;
-    max-width: max-content;
-    background-color: rgba(0, 0, 0, .1);
+    max-width: 300px;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.rules ul{
+    list-style: none;
+    margin-top: 5px;
 }
 

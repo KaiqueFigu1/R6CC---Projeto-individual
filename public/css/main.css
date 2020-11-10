@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+}
+
+main{
+    width: 80%;
+    margin: auto;
+    padding: 5px;
 }
 
 .menu{
@@ -9,9 +18,13 @@
     justify-content: space-between;
     padding: 15px;
     align-items: center;
-    height: 10vh;
+    height: 15vh;
     width: 100vw;
-    background-color: #ffa700;
+    background-color: #596a71;
+}
+
+.menu div img{
+    width: 100px;
 }
 
 .menu ul{
@@ -24,14 +37,33 @@
 }
 
 .menu ul li a{
+    transition: .3s;
     text-decoration: none;
     color: black;
-    border-bottom: 1px solid #ffffff;
     padding: 3px;
 }
 
-.on{
-    background-color: #ffffff;
+.menu ul li a:hover{
+    background-color:rgba(255, 255, 255, 1);
     border: 1px solid #ffffff;
     border-radius: 5px;
+}
+
+.on{
+    background-color:rgba(255, 255, 255, .5);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+.on:hover{
+    background-color:rgba(255, 255, 255, 1);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+.alert{
+    background-color: #ffe819;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: max-content;
 }
