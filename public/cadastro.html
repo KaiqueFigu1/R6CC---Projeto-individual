@@ -28,6 +28,7 @@
 
         <div class="container-flex">
             <div>
+                <div style="display: none;" id="alert" class="alert"></div>
                 <form method="POST" action="/user/singup">
                     <ul>
                         <li><label for="email">Email</label> <input id="email" type="text" name="email"></li>
@@ -35,7 +36,7 @@
                         <li><label for="password">Senha</label><input id="password" type="password" name="password"></li>               
                     </ul>
                 </form>
-                <button onclick="validation()" class="btn">Cadastrar!</button>
+                <button onclick="validation()" id="submit-btn" class="btn">Cadastrar!</button>
             </div>
             <div class="attention">
                 <img src="images/aguarde.gif" id="wait">

@@ -29,8 +29,12 @@ router.post('/singup', (req, res) => {
     sequelize.query(sql, { type: Sequelize.QueryTypes.INSERT })
         .then(r => {
             console.log(r)
+            res.send({
+                status: 'ok'
+            })
         }).catch(err => {
             console.error(`Ocorreu um erro ${err.errors[0].message} valor ${err.errors[0].value}`)
+            res.send(err)
         })
 })
 

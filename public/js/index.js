@@ -1,4 +1,7 @@
-function validation(){
+async function validation(){
+    
+    const bt = document.getElementById('submit-btn')
+    bt.disabled = true
 
     showGif()
 
@@ -15,7 +18,7 @@ function validation(){
         if(userData.password.length >= 8){
             console.log('Password ok')
 
-            fetchSingup(userData)
+            await fetchSingup(userData)
         }else{
             console.log('Invalid password')
         }
@@ -23,6 +26,8 @@ function validation(){
         console.log('Invalid email')
     }
       
+    bt.disabled = false
+    closeGif()
 }
 
 function showGif(){
@@ -45,6 +50,52 @@ function fetchSingup(userData){
     }
 
     fetch('/user/singup', options)
-        .then(r => r.json())
-        .then(res => console.log(res))
+    .then(r => r.json())
+    .then(res => {
+        setAlert(res)
+    })
+}
+
+function setAlert(res){
+
+    const alert = document.getElementById('alert')
+
+    if(res.status == 'ok'){
+        
+        alert.innerHTML = ''
+        alert.style.display = 'block'
+
+        const h2 = document.createElement('h2')
+        const p = document.createElement('p')
+        const content = document.createTextNode('Sua conta foi criado com succeso volte para tela de ')
+        const a = document.createElement('a')
+        const link = document.createTextNode('login')
+
+        a.appendChild(link)
+        a.href = '/login'
+
+        h2.appendChild(document.createTextNode('Deu Bom!'))
+        p.appendChild(content)
+        p.appendChild(a)
+
+        alert.appendChild(h2)
+        alert.appendChild(p)
+        alert.style.backgroundColor = '#50ff24'
+    } else {
+
+        alert.innerHTML = ''
+        alert.style.display = 'block'
+
+        const h2 = document.createElement('h2')
+        const p = document.createElement('p')
+
+        let content = document.createTextNode(`O nome de usuário ou email ${res.errors[0].value} já existe`);        
+
+        h2.appendChild(document.createTextNode('Deu Ruim!'))
+        p.appendChild(content)
+
+        alert.appendChild(h2)
+        alert.appendChild(p)
+        alert.style.backgroundColor = '#ff3b3b'
+    }
 }

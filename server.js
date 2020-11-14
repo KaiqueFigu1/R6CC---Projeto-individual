@@ -9,9 +9,11 @@ server.use(express.static(path.join(__dirname, 'public')))
 
 const indexRouter = require("./routes/index")
 const userRouter = require("./routes/user")
+const matchRouter = require("./routes/matchmaking")
 
 server.use('/', indexRouter)
 server.use('/user', userRouter)
+server.use('/match', matchRouter)
 
 const port = 3000
 
